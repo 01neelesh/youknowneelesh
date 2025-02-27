@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/youknowneelesh/static/css/main.6e3f059e.css",
+    "main.js": "/youknowneelesh/static/js/main.89b57432.js",
+    "static/media/profilevideo-unscreen.gif": "/youknowneelesh/static/media/profilevideo-unscreen.679e769070a60925f13e.gif",
+    "static/media/open-mic.jpg": "/youknowneelesh/static/media/open-mic.bd9f0f5cdf2ea91b4be7.jpg",
+    "index.html": "/youknowneelesh/index.html",
+    "main.6e3f059e.css.map": "/youknowneelesh/static/css/main.6e3f059e.css.map",
+    "main.89b57432.js.map": "/youknowneelesh/static/js/main.89b57432.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.6e3f059e.css",
+    "static/js/main.89b57432.js"
+  ]
+}
