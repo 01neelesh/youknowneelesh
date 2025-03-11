@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { BookOpen, Code, TrendingUp, ExternalLink } from 'lucide-react';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHandsPraying, faMagnifyingGlassChart } from '@fortawesome/free-solid-svg-icons';
 import WaveBackground from './components/WaveBackground.js';
 import ContactSection from './components/ContactSection.js';
@@ -12,7 +12,7 @@ import profilePic from './assets/profilevideo-unscreen.gif';
 import poetryPic from './assets/open-mic.jpg';
 import AboutProjects from './components/AboutProjects.js';
 
-// SkillCard Component - Updated to accept and render children
+// SkillCard Component (unchanged)
 const SkillCard = ({ icon, title, skills, description, children }) => (
   <motion.div
     whileHover={{ y: -10 }}
@@ -23,8 +23,6 @@ const SkillCard = ({ icon, title, skills, description, children }) => (
       <h3 className="text-lg sm:text-xl font-semibold">{title}</h3>
     </div>
     <p className="leading-relaxed mb-4">{description}</p>
-
-    {/* Skills list rendering */}
     {skills && skills.length > 0 && (
       <div className="mt-4">
         <div className="flex flex-wrap gap-2">
@@ -39,17 +37,39 @@ const SkillCard = ({ icon, title, skills, description, children }) => (
         </div>
       </div>
     )}
-
     {children}
   </motion.div>
 );
-
 
 const App = () => {
   const [currentLearning, setCurrentLearning] = useState('DSA');
   const [futureGoals] = useState(['AWS', 'System Design']);
   const { scrollYProgress } = useScroll();
   const travelerX = useTransform(scrollYProgress, [0, 1], ['0%', '80%']);
+
+  // State for text rotator
+  const greetings = [
+    "Hello", // English
+    "नमस्ते", // Hindi (Namaste)
+    "வணக்கம்", // Tamil (Vanakkam)
+    "నమస్కారం", // Telugu (Namaskaram)
+    "ನಮಸ್ಕಾರ", // Kannada (Namaskara)
+    "നമസ്കാരം", // Malayalam (Namaskaram)
+    "নমস্কার", // Bengali (Nomoshkar)
+    "નમસ્તે", // Gujarati (Namaste)
+    "ਸਤਿ ਸ਼੍ਰੀ ਅਕਾਲ", // Punjabi (Sat Sri Akal)
+    "ନମସ୍କାର", // Odia (Namaskar)
+    "नमस्कार", // Marathi (Namaskar)
+  ];
+  const [currentGreetingIndex, setCurrentGreetingIndex] = useState(0);
+
+  // Text rotator effect
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentGreetingIndex((prevIndex) => (prevIndex + 1) % greetings.length);
+    }, 2000); // Rotate every 2 seconds
+    return () => clearInterval(interval);
+  }, [greetings.length]);
 
   // Responsive viewport helper
   const useViewport = () => {
@@ -76,22 +96,33 @@ const App = () => {
         initial={{ scale: 0 }}
         animate={{ scale: 1 }}
         transition={{ duration: 0.5 }}
+        aria-label="Scroll Progress Indicator"
       >
         <div className="w-full h-full bg-orange-500 rounded-full shadow-lg animate-pulse" />
       </motion.div>
 
       <div className="content">
-        {/* Hero Section */}
+        {/* Hero Section with Text Rotator */}
         <Section className="min-h-screen flex items-center justify-center">
-          <motion.div className="text-center space-y-6 p-4 sm:p-6 lg:p-8">
-            <motion.h1
-              className="text-3xl sm:text-4xl lg:text-6xl font-bold bg-gradient-to-r from-orange-500 to-pink-500 bg-clip-text text-transparent"
+          <motion.div className="text-center space-y-8 p-4 sm:p-6 lg:p-8">
+            <motion.div
+              className="text-3xl sm:text-4xl lg:text-6xl font-bold"
               initial={{ opacity: 0, y: -50 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8 }}
             >
-              नमस्कार <FontAwesomeIcon icon={faHandsPraying} className="ml-2 text-orange-500 to-pink-500" />
-            </motion.h1>
+              <motion.span
+                key={greetings[currentGreetingIndex]}
+                className="bg-gradient-to-r from-orange-500 to-pink-500 bg-clip-text text-transparent inline-block"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -20 }}
+                transition={{ duration: 0.5 }}
+              >
+                {greetings[currentGreetingIndex]}
+              </motion.span>
+              <FontAwesomeIcon icon={faHandsPraying} className="ml-2 text-orange-500 to-pink-500" />
+            </motion.div>
             <motion.div
               className="relative w-32 h-32 sm:w-48 sm:h-48 lg:w-56 lg:h-56 mx-auto rounded-full overflow-hidden"
               initial={{ scale: 0 }}
@@ -108,8 +139,8 @@ const App = () => {
                 loading="lazy"
               />
             </motion.div>
-            <p className="text-base sm:text-lg lg:text-xl max-w-xl mx-auto leading-relaxed">
-              मैं Neelesh, a coder by day, a market analyst by passion, and a poet by soul.
+            <p className="text-base sm:text-lg lg:text-xl max-w-xl mx-auto leading-relaxed bg-gray-800/50 p-6 rounded-xl">
+              Myself Neelesh, a coder by day, a market analyst by passion, and a poet by soul.
               Life is a cycle, much like the stock market, with its ups and downs. I find joy in decoding its patterns through code, charts, and verses.
             </p>
           </motion.div>
@@ -150,15 +181,13 @@ const App = () => {
                   href="https://curvy-crowley-25d.notion.site/Patterns-and-Short-term-Strategies-PSTS-6e11adf4763a4398ac9744cf732ce45e"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center text-orange-500 font-medium hover:underline transition-all duration-300"
+                  className="inline-flex items-center text-orange-400 font-medium hover:underline transition-all duration-300"
                   whileHover={{ scale: 1.05 }}
                 >
                   Strategies
                   <FontAwesomeIcon icon={faMagnifyingGlassChart} className="ml-2" />
                 </motion.a>
               </div>
-              
-
             </SkillCard>
 
             <SkillCard
@@ -174,7 +203,7 @@ const App = () => {
         <Section>
           <div className="max-w-4xl mx-auto px-4">
             <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold mb-12 text-center">Growth Journey</h2>
-            <div className="bg-gray-800\50 p-6 rounded-xl shadow-xl">
+            <div className="bg-gray-800/50 p-6 rounded-xl shadow-xl">
               <div className="space-y-8">
                 <div>
                   <h3 className="text-lg sm:text-xl font-semibold mb-4">Currently Learning</h3>
@@ -212,10 +241,10 @@ const App = () => {
           <div className="max-w-4xl mx-auto px-4">
             <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold mb-12 text-center">Poetry & Connection</h2>
             <div className="grid gap-8 md:grid-cols-2 items-center">
-              <div className="bg-gray-800/50 p-6 rounded-xl">
+              <div className="bg-gray-800/50 p-8 rounded-xl">
                 <blockquote className="text-lg sm:text-xl lg:text-2xl italic leading-relaxed">
                   घर से निकल पड़े कदम , न जाने कहाँ को जायेंगे,<br />
-                   वापस पहुंचे तो ठीक, वर्ना जमींदोज़ हो जायेंगे |
+                  वापस पहुंचे तो ठीक, वर्ना जमींदोज़ हो जायेंगे |
                 </blockquote>
               </div>
               <motion.div whileHover={{ scale: 1.02 }} className="relative rounded-xl overflow-hidden">
@@ -232,7 +261,7 @@ const App = () => {
           </div>
         </Section>
 
-        {/* Social Section  */}
+        {/* Social Section */}
         <Section>
           <SocialBadge />
         </Section>
@@ -242,7 +271,7 @@ const App = () => {
 
         {/* Footer */}
         <footer className="py-8 text-center">
-          <p className="text-base sm:text-lg font-medium text-gray-400 ">
+          <p className="text-base sm:text-lg font-medium text-gray-400">
             चले तो कट ही जाएगा सफ़र आहिस्ता आहिस्ता <br />
             If we walk, the journey will pass slowly
           </p>
