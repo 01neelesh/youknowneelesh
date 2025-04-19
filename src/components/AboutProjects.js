@@ -23,11 +23,11 @@ const AboutProjects = () => {
 
         {
             title: 'Forward Master Bot',
-            role: 'Creator',
+            role: 'Developer',
             description: 'Telegram bot that automates message forwarding from multiple source groups to a target group with advanced filtering capabilities to exclude promotional content.',
             motivation: 'Created to streamline information management across numerous Telegram groups, reducing curation time and filtering unwanted content.',
             technologies: ['Python', 'asyncio', 'Telegram Bot API'],
-            github: 'https://github.com/01neelesh/Forward_Master_Bote/stock-analyzer',
+            github: 'https://github.com/01neelesh/Forward_Master_Bot',
             image: placeholderImage2,
             additionalImage: placeholderImage1, // Second image for visual balance
         },
