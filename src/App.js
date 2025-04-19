@@ -99,8 +99,8 @@ const Navbar = () => {
   );
 };
 const App = () => {
-  const [currentLearning, setCurrentLearning] = useState('DSA');
-  const [futureGoals] = useState(['AWS', 'System Design']);
+  const [currentLearning, setCurrentLearning] = useState('Jetpack Compose');
+  const [futureGoals] = useState(['KMP','System Design']);
   const { scrollYProgress } = useScroll();
   const travelerX = useTransform(scrollYProgress, [0, 1], ['0%', '80%']);
 
