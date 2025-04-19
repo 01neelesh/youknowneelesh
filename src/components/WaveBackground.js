@@ -43,37 +43,54 @@ const WaveBackground = () => {
     waves.forEach(wave => scene.add(wave));
     camera.position.z = 50;
 
-    // Add sci-fi traveling lights (particles)
-    const particleCount = 100;
+    // Enhanced circular particle system
+    const particleCount = 150; // Increased for more density
     const particlesGeometry = new THREE.BufferGeometry();
     const positions = new Float32Array(particleCount * 3);
+    const velocities = new Float32Array(particleCount * 2); // x, y velocities for circular motion
     const colors = new Float32Array(particleCount * 3);
     const sizes = new Float32Array(particleCount);
+    const centers = new Float32Array(particleCount * 3); // Center points for circular paths
 
     for (let i = 0; i < particleCount; i++) {
-      positions[i * 3] = (Math.random() - 0.5) * 200;     // x
-      positions[i * 3 + 1] = (Math.random() - 0.5) * 100; // y
-      positions[i * 3 + 2] = (Math.random() - 0.5) * 50;  // z
+      const angle = Math.random() * Math.PI * 2;
+      const radius = 20 + Math.random() * 30; // Vary radius for circular paths
+      const centerX = (Math.random() - 0.5) * 150;
+      const centerY = (Math.random() - 0.5) * 50;
+      const centerZ = (Math.random() - 0.5) * 30;
 
-      // Sci-fi color palette (neon blue, purple, green)
+      positions[i * 3] = centerX + Math.cos(angle) * radius;     // x
+      positions[i * 3 + 1] = centerY + Math.sin(angle) * radius; // y
+      positions[i * 3 + 2] = centerZ;                            // z
+
+      centers[i * 3] = centerX;
+      centers[i * 3 + 1] = centerY;
+      centers[i * 3 + 2] = centerZ;
+
+      velocities[i * 2] = 0.05 + Math.random() * 0.1; // Speed variation
+      velocities[i * 2 + 1] = Math.random() < 0.5 ? 1 : -1; // Direction
+
+      // Neon sci-fi colors
       const color = new THREE.Color();
-      color.setHSL(Math.random(), 0.8, 0.5);
+      color.setHSL((Math.random() * 0.3 + 0.5), 0.9, 0.7); // Blue-purple-green spectrum
       colors[i * 3] = color.r;
       colors[i * 3 + 1] = color.g;
       colors[i * 3 + 2] = color.b;
 
-      sizes[i] = Math.random() * 2 + 1; // Particle size
+      sizes[i] = 1 + Math.random() * 3; // Varied sizes for depth
     }
 
     particlesGeometry.setAttribute('position', new THREE.BufferAttribute(positions, 3));
     particlesGeometry.setAttribute('color', new THREE.BufferAttribute(colors, 3));
     particlesGeometry.setAttribute('size', new THREE.BufferAttribute(sizes, 1));
+    particlesGeometry.setAttribute('center', new THREE.BufferAttribute(centers, 3)); // Store center for circular motion
 
     const particlesMaterial = new THREE.PointsMaterial({
       size: 2,
       vertexColors: true,
       transparent: true,
-      opacity: 0.3,
+      opacity: 0.4,
+      blending: THREE.AdditiveBlending, // Glow effect
     });
     const particles = new THREE.Points(particlesGeometry, particlesMaterial);
     scene.add(particles);
@@ -96,15 +113,20 @@ const WaveBackground = () => {
         wave.rotation.z = Math.sin(time * 0.1) * 0.05;
       });
 
-      // Particle animation (moving opposite to waves)
+      // Circular particle animation
       const particlePositions = particles.geometry.attributes.position.array;
+      const centersAttr = particles.geometry.attributes.center.array;
       for (let i = 0; i < particleCount; i++) {
-        particlePositions[i * 3 + 2] += 0.5; // Move particles forward
-        if (particlePositions[i * 3 + 2] > 50) {
-          particlePositions[i * 3 + 2] = -50; // Reset to back
-        }
+        const angle = time * velocities[i * 2] + (i * 0.1);
+        particlePositions[i * 3] = centersAttr[i * 3] + Math.cos(angle) * 20; // Circular radius
+        particlePositions[i * 3 + 1] = centersAttr[i * 3 + 1] + Math.sin(angle) * 20;
+        particlePositions[i * 3 + 2] = centersAttr[i * 3 + 2] + Math.sin(time * 0.5) * 5; // Vertical pulse
+
+        // Pulsing size
+        sizes[i] = 1 + Math.sin(time + i) * 1.5;
       }
       particles.geometry.attributes.position.needsUpdate = true;
+      particles.geometry.attributes.size.needsUpdate = true;
 
       renderer.render(scene, camera);
     };

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
-import { BookOpen, Code, TrendingUp, ExternalLink } from 'lucide-react';
+import { BookOpen, Code, TrendingUp, ExternalLink, Menu , Download } from 'lucide-react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHandsPraying, faMagnifyingGlassChart } from '@fortawesome/free-solid-svg-icons';
 import WaveBackground from './components/WaveBackground.js';
@@ -9,7 +9,6 @@ import Section from './components/Section.js';
 import SocialBadge from './components/SocialBadges.js';
 import './styles/index.css';
 import profilePic from './assets/profilevideo-unscreen.gif';
-import poetryPic from './assets/open-mic.jpg';
 import AboutProjects from './components/AboutProjects.js';
 
 // SkillCard Component (unchanged)
@@ -41,6 +40,64 @@ const SkillCard = ({ icon, title, skills, description, children }) => (
   </motion.div>
 );
 
+// Navbar Component (fixed and moved outside)
+
+const Navbar = () => {
+  const [isOpen, setIsOpen] = React.useState(false);
+
+  return (
+    <motion.nav
+      className="fixed top-0 w-full bg-gray-900/80 backdrop-blur-md z-50"
+      initial={{ y: -100 }}
+      animate={{ y: 0 }}
+      transition={{ duration: 0.5 }}
+    >
+      <div className="container mx-auto px-4 py-4 flex justify-between items-center">
+        <motion.a href="#home" className="text-xl font-bold text-orange-500">Neelesh</motion.a>
+        <div className="hidden md:flex space-x-6">
+          <motion.a href="#skills" className="text-gray-300 hover:text-orange-500">Skills</motion.a>
+          <motion.a href="#myprojects" className="text-gray-300 hover:text-orange-500">Projects</motion.a>
+          <motion.a href="#contact" className="text-gray-300 hover:text-orange-500">Contact</motion.a>
+          <motion.a
+            href="https://drive.google.com/uc?export=download&id=1hK_EwH_X6-K5I7rr7K1B8U35Q6C6221j" 
+            download="Neelesh_Chaturvedi_Resume.pdf"
+            className="bg-orange-500 text-white px-4 py-2 rounded-full flex items-center space-x-2 hover:bg-orange-600 transition"
+            whileHover={{ scale: 1.1 }}
+          >
+            <Download size = {16} />
+            <span>Resume</span>
+          </motion.a>
+        </div>
+        <div className="md:hidden">
+          <motion.button onClick={() => setIsOpen(!isOpen)} className="text-gray-300">
+            <Menu size={24} />
+          </motion.button>
+          {isOpen && (
+            <motion.div
+              className="absolute top-16 right-4 bg-gray-800 p-4 rounded-lg shadow-lg"
+              initial={{ opacity: 0, y: -10 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -10 }}
+            >
+              <motion.a href="#skills" className="block text-gray-300 hover:text-orange-500 py-2">Skills</motion.a>
+              <motion.a href="#myprojects" className="block text-gray-300 hover:text-orange-500 py-2">Projects</motion.a>
+              <motion.a href="#contact" className="block text-gray-300 hover:text-orange-500 py-2">Contact</motion.a>
+              <motion.a
+                href="https://drive.google.com/uc?export=download&id=1hK_EwH_X6-K5I7rr7K1B8U35Q6C6221j" // Replace with your ID
+                download="Neelesh_Chaturvedi_Resume.pdf"
+                className="bg-orange-500 text-white px-4 py-2 rounded-full flex items-center space-x-2 hover:bg-orange-600 transition"
+                whileHover={{ scale: 1.1 }}
+              >
+                <Download size = {16} />
+                <span>Resume</span>
+              </motion.a>
+            </motion.div>
+          )}
+        </div>
+      </div>
+    </motion.nav>
+  );
+};
 const App = () => {
   const [currentLearning, setCurrentLearning] = useState('DSA');
   const [futureGoals] = useState(['AWS', 'System Design']);
@@ -86,6 +143,7 @@ const App = () => {
 
   return (
     <div className="app min-h-screen">
+      <Navbar /> {/* Use the Navbar component here */}
       <WaveBackground />
       <div className="fixed inset-0 bg-gradient-to-br from-gray-900/80 via-gray-800/80 to-gray-900/80 z-[-5]" />
 
@@ -152,7 +210,7 @@ const App = () => {
         </Section>
 
         {/* Skills Section */}
-        <Section>
+        <Section id="skills">
           <motion.h2
             className="text-2xl sm:text-3xl lg:text-4xl font-bold text-center mb-12"
             initial={{ opacity: 0 }}
@@ -166,7 +224,7 @@ const App = () => {
             <SkillCard
               icon={<Code size={isMobile ? 24 : 32} />}
               title="Development"
-              skills={['Java', 'Python', 'SQL', 'Spring Boot', 'Mobile Applications']}
+              skills={['Java', 'Python', 'SQL', 'Spring Boot', 'Mobile Applications', 'Firebase', 'MySql', 'XML']}
               description="Practical learning driven by solid fundamentals."
             />
 
@@ -200,7 +258,7 @@ const App = () => {
         </Section>
 
         {/* Growth Journey Section */}
-        <Section>
+        <Section id="growth">
           <div className="max-w-4xl mx-auto px-4">
             <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold mb-12 text-center">Growth Journey</h2>
             <div className="bg-gray-800/50 p-6 rounded-xl shadow-xl">
@@ -236,44 +294,22 @@ const App = () => {
           </div>
         </Section>
 
-        {/* Poetry Section */}
-        <Section>
-          <div className="max-w-4xl mx-auto px-4">
-            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold mb-12 text-center">Poetry & Connection</h2>
-            <div className="grid gap-8 md:grid-cols-2 items-center">
-              <div className="bg-gray-800/50 p-8 rounded-xl">
-                <blockquote className="text-lg sm:text-xl lg:text-2xl italic leading-relaxed">
-                  घर से निकल पड़े कदम , न जाने कहाँ को जायेंगे,<br />
-                  वापस पहुंचे तो ठीक, वर्ना जमींदोज़ हो जायेंगे |
-                </blockquote>
-              </div>
-              <motion.div whileHover={{ scale: 1.02 }} className="relative rounded-xl overflow-hidden">
-                <img
-                  src={poetryPic}
-                  srcSet={`${poetryPic} 300w, ${poetryPic} 600w`}
-                  sizes="(max-width: 768px) 150px, 300px"
-                  alt="Poetry Performance"
-                  className="w-full object-cover rounded-xl shadow-xl"
-                  loading="lazy"
-                />
-              </motion.div>
-            </div>
-          </div>
-        </Section>
-
+        {/* Remove Poetry Section */}
         {/* Social Section */}
-        <Section>
+        <Section id="social">
           <SocialBadge />
         </Section>
 
         {/* Contact Section */}
-        <ContactSection />
+        <Section id="contact">
+          <ContactSection />
+        </Section>
 
         {/* Footer */}
         <footer className="py-8 text-center">
           <p className="text-base sm:text-lg font-medium text-gray-400">
             चले तो कट ही जाएगा सफ़र आहिस्ता आहिस्ता <br />
-            If we walk, the journey will pass slowly
+            If we keep on walking, the journey will pass slowly
           </p>
         </footer>
       </div>
