@@ -55,8 +55,8 @@ const Navbar = () => {
       <div className="container mx-auto px-4 py-4 flex justify-between items-center">
         <motion.a href="#home" className="text-xl font-bold text-orange-500">Neelesh</motion.a>
         <div className="hidden md:flex space-x-6">
+        <motion.a href="#projects" className="text-gray-300 hover:text-orange-500">Projects</motion.a>
           <motion.a href="#skills" className="text-gray-300 hover:text-orange-500">Skills</motion.a>
-          <motion.a href="#projects" className="text-gray-300 hover:text-orange-500">Projects</motion.a>
           <motion.a href="#contact" className="text-gray-300 hover:text-orange-500">Contact</motion.a>
           <motion.a
             href="https://drive.google.com/uc?export=download&id=1hK_EwH_X6-K5I7rr7K1B8U35Q6C6221j" 
@@ -79,8 +79,8 @@ const Navbar = () => {
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -10 }}
             >
-              <motion.a href="#skills" className="block text-gray-300 hover:text-orange-500 py-2">Skills</motion.a>
               <motion.a href="#projects" className="block text-gray-300 hover:text-orange-500 py-2">Projects</motion.a>
+              <motion.a href="#skills" className="block text-gray-300 hover:text-orange-500 py-2">Skills</motion.a>
               <motion.a href="#contact" className="block text-gray-300 hover:text-orange-500 py-2">Contact</motion.a>
               <motion.a
                 href="https://drive.google.com/uc?export=download&id=1hK_EwH_X6-K5I7rr7K1B8U35Q6C6221j" // Replace with your ID
