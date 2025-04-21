@@ -11,7 +11,7 @@ import Section from './components/Section.js';
 import SocialBadge from './components/SocialBadges.js';
 import './styles/index.css';
 import profilePic from './assets/profilevideo-unscreen.gif';
-import AboutProjects from './components/AboutProjects.js';
+import AboutProjects from './components/ProjectSection.js';
 
 // navbar 
 const Navbar = () => {
