@@ -9,13 +9,13 @@ const ExpandableCard = () => {
   const categories = [
     { title: 'Languages', items: ['Java', 'Kotlin', 'Python', 'SQL'] },
     { title: 'Frontend', items: ['HTML', 'CSS'] },
-    { title: 'Testing', items: ['Mockito', 'cURL (Bash)'] },
+    { title: 'Testing', items: ['JUnit','Mockito', 'cURL'] },
     { title: 'Frameworks', items: ['Android Dev', 'Spring Boot 3'] },
-    { title: 'Build Tools', items: ['Gradle', 'Maven', 'Node'] },
+    { title: 'Build Tools', items: ['Gradle', 'Maven', 'npm'] },
     { title: 'Version Control', items: ['Git', 'GitHub'] },
     { title: 'Databases', items: ['MySQL', 'SQLite', 'Room', 'Firestore'] },
     { title: 'Cloud', items: ['Firebase (hands-on)'] },
-    { title: 'Libraries', items: ['Retrofit', 'OkHttp', 'Volley', 'Dagger', 'Hilt', 'ML Kit', '& more'] },
+    { title: 'Libraries', items: ['Retrofit', 'OkHttp', 'Volley', 'Dagger/Hilt', 'ML Kit'] },
   ];
 
   return (
