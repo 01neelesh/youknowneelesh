@@ -56,7 +56,6 @@ const ProjectsSection = () => {
   ];
 
   return (
-    <HelmetProvider>
     <section className="py-16 bg-gradient-to-b from-gray-800/50 to-gray-950/50">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
@@ -195,7 +194,7 @@ const ProjectsSection = () => {
         </div>
       </div>
     </section>
-    </HelmetProvider>
+
   );
 };
 

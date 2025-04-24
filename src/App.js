@@ -93,7 +93,6 @@ const Navbar = () => {
   };
 
   return (
-    <HelmetProvider>
     <motion.nav
       className="fixed top-0 w-full z-50 px-4 py-3 transition-all duration-300"
       variants={navbarVariants}
@@ -200,7 +199,7 @@ const Navbar = () => {
         </motion.div>
       </div>
     </motion.nav>
-  </HelmetProvider>
+ 
   );
 };
 
@@ -241,6 +240,12 @@ const App = () => {
   return (
     <HelmetProvider>
     <div className="app min-h-screen">
+<Helmet>
+<title>Neelesh Chaturvedi - Portfolio | Coder, Analyst, Poet</title>
+<meta name="description" content="Explore the portfolio of Neelesh Chaturvedi, a software developer with a passion for market analysis and poetry. Discover my projects in web and mobile development." />
+<meta tags = "technical roles " content='software developer , Native android developer , developer portfolio , dynamic portfolio , netlify site , portfolio website'> </meta>
+</Helmet>
+
       <Navbar />
       <WaveBackground />
       <div className="fixed inset-0 bg-gradient-to-br from-gray-900/80 via-gray-800/80 to-gray-900/80 z-[-5]" />
