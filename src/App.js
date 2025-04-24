@@ -12,7 +12,7 @@ import SocialBadge from './components/SocialBadges.js';
 import './styles/index.css';
 import profilePic from './assets/profilevideo-unscreen.gif';
 import AboutProjects from './components/ProjectSection.js';
-import { Helmet , HelmetProvider } from 'react-helmet-async';
+import { Helmet, HelmetProvider } from 'react-helmet-async';
 
 // navbar 
 const Navbar = () => {
@@ -102,8 +102,8 @@ const Navbar = () => {
       <div className="container mx-auto">
         <div className="flex items-center justify-between">
           {/* Logo */}
-          <motion.a 
-            href="#home" 
+          <motion.a
+            href="#home"
             className="relative z-10 group"
             whileHover={{ scale: 1.05 }}
           >
@@ -112,7 +112,7 @@ const Navbar = () => {
                 Neelesh
               </span>
             </span>
-            <motion.span 
+            <motion.span
               className="absolute bottom-0 left-0 w-0 h-[2px] bg-gradient-to-r from-orange-500 to-pink-500 group-hover:w-full transition-all duration-300"
               layoutId="underline"
             />
@@ -179,7 +179,7 @@ const Navbar = () => {
                 {link.name}
               </motion.a>
             ))}
-            <motion.div 
+            <motion.div
               className="px-5 pt-3 pb-4"
               variants={mobileItemVariants}
             >
@@ -199,7 +199,7 @@ const Navbar = () => {
         </motion.div>
       </div>
     </motion.nav>
- 
+
   );
 };
 
@@ -238,183 +238,183 @@ const App = () => {
   const [expandedCard, setExpandedCard] = useState(null); // 🔥 Shared state for both cards
 
   return (
-    <HelmetProvider>
-    <div className="app min-h-screen">
-<Helmet>
-<title>Neelesh Chaturvedi - Portfolio | Coder, Analyst, Poet</title>
-<meta name="description" content="Explore the portfolio of Neelesh Chaturvedi, a software developer with a passion for market analysis and poetry. Discover my projects in web and mobile development." />
-<meta tags = "technical roles " content='software developer , Native android developer , developer portfolio , dynamic portfolio , netlify site , portfolio website'> </meta>
-</Helmet>
+    <HelmetProvider>l̥
+      <div className="app min-h-screen">
+        <Helmet>
+          <title>Neelesh Chaturvedi - Portfolio | Coder, Analyst, Poet</title>
+          <meta name="description" content="Explore the portfolio of Neelesh Chaturvedi, a software developer with a passion for market analysis and poetry. Discover my projects in web and mobile development." />
+          <meta tags="technical roles " content='software developer , Native android developer , developer portfolio , dynamic portfolio , netlify site , portfolio website'/>
+        </Helmet>
 
-      <Navbar />
-      <WaveBackground />
-      <div className="fixed inset-0 bg-gradient-to-br from-gray-900/80 via-gray-800/80 to-gray-900/80 z-[-5]" />
+        <Navbar />
+        <WaveBackground />
+        <div className="fixed inset-0 bg-gradient-to-br from-gray-900/80 via-gray-800/80 to-gray-900/80 z-[-5]" />
 
-      <motion.div
-        className="fixed bottom-8 left-0 h-8 w-8 sm:h-12 sm:w-12 text-orange-500 opacity-50 z-20"
-        style={{ x: travelerX }}
-        initial={{ scale: 0 }}
-        animate={{ scale: 1 }}
-        transition={{ duration: 0.5 }}
-      >
-        <div className="w-full h-full bg-orange-500 rounded-full shadow-lg animate-pulse" />
-      </motion.div>
+        <motion.div
+          className="fixed bottom-8 left-0 h-8 w-8 sm:h-12 sm:w-12 text-orange-500 opacity-50 z-20"
+          style={{ x: travelerX }}
+          initial={{ scale: 0 }}
+          animate={{ scale: 1 }}
+          transition={{ duration: 0.5 }}
+        >
+          <div className="w-full h-full bg-orange-500 rounded-full shadow-lg animate-pulse" />
+        </motion.div>
 
-      <div className="content">
-        <Section className="min-h-screen flex items-center justify-center">
-          <motion.div className="text-center space-y-8 p-4 sm:p-6 lg:p-8">
-            <motion.div
-              className="text-3xl sm:text-4xl lg:text-6xl font-bold"
-              initial={{ opacity: 0, y: -50 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8 }}
-            >
-              <motion.span
-                key={greetings[currentGreetingIndex]}
-                className="bg-gradient-to-r from-orange-500 to-pink-500 bg-clip-text text-transparent inline-block"
-                initial={{ opacity: 0, y: 20 }}
+        <div className="content">
+          <Section className="min-h-screen flex items-center justify-center">
+            <motion.div className="text-center space-y-8 p-4 sm:p-6 lg:p-8">
+              <motion.div
+                className="text-3xl sm:text-4xl lg:text-6xl font-bold"
+                initial={{ opacity: 0, y: -50 }}
                 animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -20 }}
-                transition={{ duration: 0.5 }}
+                transition={{ duration: 0.8 }}
               >
-                {greetings[currentGreetingIndex]}
-              </motion.span>
-              <FontAwesomeIcon icon={faHandsPraying} className="ml-2 text-orange-500 to-pink-500" />
-            </motion.div>
-
-            <motion.div
-              className="relative w-32 h-32 sm:w-48 sm:h-48 lg:w-56 lg:h-56 mx-auto rounded-full overflow-hidden"
-              initial={{ scale: 0 }}
-              animate={{ scale: 1, rotate: 360 }}
-              transition={{ delay: 0.2, type: 'spring', stiffness: 120 }}
-            >
-              <div className="absolute inset-0 bg-gradient-to-r from-gray-500 to-black-500 animate-pulse" style={{ filter: 'blur(10px)', transform: 'scale(1.1)' }} />
-              <img
-                src={profilePic}
-                alt="Neelesh Chaturvedi"
-                className="relative w-full h-full object-cover border-transparent"
-                loading="lazy"
-              />
-            </motion.div>
-
-            <p className="text-base sm:text-lg lg:text-xl max-w-xl mx-auto leading-relaxed bg-gray-800/50 p-6 rounded-xl">
-              Myself Neelesh, a coder by day, a market analyst by passion, and a poet by soul.
-              Life is a cycle, much like the stock market, with its ups and downs. I find joy in decoding its patterns through code, charts, and verses.
-            </p>
-          </motion.div>
-        </Section>
-
-        <Section id="projects">
-          <AboutProjects />
-        </Section>
-
-        <Section id="skills">
-          <motion.h2
-            className="text-2xl sm:text-3xl lg:text-4xl font-bold text-center mb-12"
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            viewport={{ once: true }}
-          >
-            Developing Knowledgebase
-          </motion.h2>
-
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-6 max-w-6xl mx-auto px-4 items-stretch">
-            <ExpandableCard
-              isExpanded={expandedCard === 'dev'}
-              onHover={() => setExpandedCard('dev')}
-              onLeave={() => setExpandedCard(null)}
-            />
-            
-            <HoverCard
-              icon={<TrendingUp size={24} />}
-              title="Research & Analysis"
-              description="Post-pandemic market learning focused on VCP (Minervini), day trading (Gajjala), and technical analysis. Strong fundamentals guide my practice."
-              isExpanded={expandedCard === 'analysis'}
-              onHover={() => setExpandedCard('analysis')}
-              onLeave={() => setExpandedCard(null)}
-              categories={[
-                {
-                  name: 'Market Accuracy',
-                  links: [
-                    {
-                      label: 'Check My Accuracy',
-                      href: 'https://curvy-crowley-25d.notion.site/Patterns-and-Short-term-Strategies-PSTS-6e11adf4763a4398ac9744cf732ce45e',
-                      icon: <FontAwesomeIcon icon={faMagnifyingGlassChart} />,
-                    },
-                  ],
-                },
-                {
-                  name: 'Stock Screeners',
-                  links: [
-                    {
-                      label: 'Mid Cap Growth Companies',
-                      href: 'https://www.screener.in/screens/2020273/mid-cap-growth-companies/',
-                    },
-                    {
-                      label: 'Undervalued Financially Backed Stocks',
-                      href: 'https://www.screener.in/screens/1826601/undervalued-financially-backed-stocks/',
-                    },
-                    {
-                      label: 'Margin Enhancement Picks',
-                      href: 'https://www.screener.in/screens/1826592/margin-enhancement/',
-                    },
-                  ],
-                },
-              ]}
-            />
-          </div>
-        </Section>
-
-        <Section id="growth">
-          <div className="max-w-4xl mx-auto px-4">
-            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold mb-12 text-center">Growth Journey</h2>
-            <div className="bg-gray-800/50 p-6 rounded-xl shadow-xl space-y-8">
-              <div>
-                <h3 className="text-lg sm:text-xl font-semibold mb-4">Currently Learning</h3>
-                <motion.div
-                  className="bg-gradient-to-r from-orange-500 to-pink-500 text-white px-4 py-2 rounded-lg inline-block"
-                  whileHover={{ scale: 1.05 }}
+                <motion.span
+                  key={greetings[currentGreetingIndex]}
+                  className="bg-gradient-to-r from-orange-500 to-pink-500 bg-clip-text text-transparent inline-block"
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -20 }}
+                  transition={{ duration: 0.5 }}
                 >
-                  {currentLearning}
-                </motion.div>
-              </div>
-              <div>
-                <h3 className="text-lg sm:text-xl font-semibold mb-4">Future Goals</h3>
-                <div className="flex flex-wrap gap-3">
-                  {futureGoals.map((goal, index) => (
-                    <motion.div
-                      key={goal}
-                      className="bg-blue-600 text-white px-4 py-2 rounded-lg"
-                      whileHover={{ scale: 1.05 }}
-                      initial={{ opacity: 0 }}
-                      animate={{ opacity: 1 }}
-                      transition={{ delay: 0.1 * index }}
-                    >
-                      {goal}
-                    </motion.div>
-                  ))}
+                  {greetings[currentGreetingIndex]}
+                </motion.span>
+                <FontAwesomeIcon icon={faHandsPraying} className="ml-2 text-orange-500 to-pink-500" />
+              </motion.div>
+
+              <motion.div
+                className="relative w-32 h-32 sm:w-48 sm:h-48 lg:w-56 lg:h-56 mx-auto rounded-full overflow-hidden"
+                initial={{ scale: 0 }}
+                animate={{ scale: 1, rotate: 360 }}
+                transition={{ delay: 0.2, type: 'spring', stiffness: 120 }}
+              >
+                <div className="absolute inset-0 bg-gradient-to-r from-gray-500 to-black-500 animate-pulse" style={{ filter: 'blur(10px)', transform: 'scale(1.1)' }} />
+                <img
+                  src={profilePic}
+                  alt="Neelesh Chaturvedi"
+                  className="relative w-full h-full object-cover border-transparent"
+                  loading="lazy"
+                />
+              </motion.div>
+
+              <p className="text-base sm:text-lg lg:text-xl max-w-xl mx-auto leading-relaxed bg-gray-800/50 p-6 rounded-xl">
+                Myself Neelesh, a coder by day, a market analyst by passion, and a poet by soul.
+                Life is a cycle, much like the stock market, with its ups and downs. I find joy in decoding its patterns through code, charts, and verses.
+              </p>
+            </motion.div>
+          </Section>
+
+          <Section id="projects">
+            <AboutProjects />
+          </Section>
+
+          <Section id="skills">
+            <motion.h2
+              className="text-2xl sm:text-3xl lg:text-4xl font-bold text-center mb-12"
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              viewport={{ once: true }}
+            >
+              Developing Knowledgebase
+            </motion.h2>
+
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-6 max-w-6xl mx-auto px-4 items-stretch">
+              <ExpandableCard
+                isExpanded={expandedCard === 'dev'}
+                onHover={() => setExpandedCard('dev')}
+                onLeave={() => setExpandedCard(null)}
+              />
+
+              <HoverCard
+                icon={<TrendingUp size={24} />}
+                title="Research & Analysis"
+                description="Post-pandemic market learning focused on VCP (Minervini), day trading (Gajjala), and technical analysis. Strong fundamentals guide my practice."
+                isExpanded={expandedCard === 'analysis'}
+                onHover={() => setExpandedCard('analysis')}
+                onLeave={() => setExpandedCard(null)}
+                categories={[
+                  {
+                    name: 'Market Accuracy',
+                    links: [
+                      {
+                        label: 'Check My Accuracy',
+                        href: 'https://curvy-crowley-25d.notion.site/Patterns-and-Short-term-Strategies-PSTS-6e11adf4763a4398ac9744cf732ce45e',
+                        icon: <FontAwesomeIcon icon={faMagnifyingGlassChart} />,
+                      },
+                    ],
+                  },
+                  {
+                    name: 'Stock Screeners',
+                    links: [
+                      {
+                        label: 'Mid Cap Growth Companies',
+                        href: 'https://www.screener.in/screens/2020273/mid-cap-growth-companies/',
+                      },
+                      {
+                        label: 'Undervalued Financially Backed Stocks',
+                        href: 'https://www.screener.in/screens/1826601/undervalued-financially-backed-stocks/',
+                      },
+                      {
+                        label: 'Margin Enhancement Picks',
+                        href: 'https://www.screener.in/screens/1826592/margin-enhancement/',
+                      },
+                    ],
+                  },
+                ]}
+              />
+            </div>
+          </Section>
+
+          <Section id="growth">
+            <div className="max-w-4xl mx-auto px-4">
+              <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold mb-12 text-center">Growth Journey</h2>
+              <div className="bg-gray-800/50 p-6 rounded-xl shadow-xl space-y-8">
+                <div>
+                  <h3 className="text-lg sm:text-xl font-semibold mb-4">Currently Learning</h3>
+                  <motion.div
+                    className="bg-gradient-to-r from-orange-500 to-pink-500 text-white px-4 py-2 rounded-lg inline-block"
+                    whileHover={{ scale: 1.05 }}
+                  >
+                    {currentLearning}
+                  </motion.div>
+                </div>
+                <div>
+                  <h3 className="text-lg sm:text-xl font-semibold mb-4">Future Goals</h3>
+                  <div className="flex flex-wrap gap-3">
+                    {futureGoals.map((goal, index) => (
+                      <motion.div
+                        key={goal}
+                        className="bg-blue-600 text-white px-4 py-2 rounded-lg"
+                        whileHover={{ scale: 1.05 }}
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        transition={{ delay: 0.1 * index }}
+                      >
+                        {goal}
+                      </motion.div>
+                    ))}
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
-        </Section>
+          </Section>
 
-        <Section id="social">
-          <SocialBadge />
-        </Section>
+          <Section id="social">
+            <SocialBadge />
+          </Section>
 
-        <Section id="contact">
-          <ContactSection />
-        </Section>
+          <Section id="contact">
+            <ContactSection />
+          </Section>
 
-        <footer className="py-8 text-center">
-          <p className="text-base sm:text-lg font-medium text-gray-400">
-            चले तो कट ही जाएगा सफ़र आहिस्ता आहिस्ता <br />
-            If we keep on walking, the journey will pass slowly
-          </p>
-        </footer>
+          <footer className="py-8 text-center">
+            <p className="text-base sm:text-lg font-medium text-gray-400">
+              चले तो कट ही जाएगा सफ़र आहिस्ता आहिस्ता <br />
+              If we keep on walking, the journey will pass slowly
+            </p>
+          </footer>
+        </div>
       </div>
-    </div>
     </HelmetProvider>
   );
 };
