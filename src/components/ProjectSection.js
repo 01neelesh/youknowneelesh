@@ -1,9 +1,9 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { FaGithub, FaExternalLinkAlt, FaDownload } from 'react-icons/fa';
-import SeatChartImage from '../assets/image.png'
-import knowItAll from '../assets/know-it-all.png'
-import crowdVos from '../assets/crowd-vs.png'
+import SeatChartImage from '../assets/image.png';
+import knowItAll from '../assets/know-it-all.png';
+import crowdVos from '../assets/crowd-vs.png';
 
 const ProjectsSection = () => {
   const projects = [
@@ -85,13 +85,28 @@ const ProjectsSection = () => {
               <div className="relative rounded-xl overflow-hidden group">
                 <div className="relative h-72 overflow-hidden rounded-lg border-2 border-gray-800">
                   <div className="absolute inset-0 bg-gradient-to-t from-orange-600/20 to-purple-800/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                <a href='https://seatchart.netlify.app/'>
-                  <img
-                    src={project.type === "Web Application" ? project.imageUrl : project.screenshotCollage}
-                    alt={`${project.title} ${project.type === "Web Application" ? "screenshot" : "screenshots"}`}
-                    className="w-full h-full object-cover object-top transition-transform duration-700 group-hover:scale-105"
-                  />
-                  </a>
+                  {project.type === "Web Application" && project.liveUrl ? (
+                    <a href={project.liveUrl} target="_blank" rel="noopener noreferrer" className="block">
+                      <img
+                        src={project.imageUrl}
+                        alt={`${project.title} screenshot`}
+                        className="w-full h-full object-cover object-top transition-transform duration-700 group-hover:scale-105"
+                      />
+                    </a>
+                  ) : (
+                    <img
+                      src={project.type === "Web Application" ? project.imageUrl : project.screenshotCollage}
+                      alt={`${project.title} ${project.type === "Web Application" ? "screenshot" : "screenshots"}`}
+                      className="w-full h-full object-cover object-top transition-transform duration-700 group-hover:scale-105 cursor-pointer"
+                      onClick={() => {
+                        if (project.type === "Android Application" && project.downloadUrl) {
+                          window.open(project.downloadUrl, '_blank');
+                        } else if (project.githubUrl) {
+                          window.open(project.githubUrl, '_blank');
+                        }
+                      }}
+                    />
+                  )}
                 </div>
               </div>
 
@@ -120,7 +135,7 @@ const ProjectsSection = () => {
                     <h4 className="text-lg font-semibold text-white mb-2">Built With</h4>
                     <div className="flex flex-wrap gap-2">
                       {project.technologies.map((tech) => (
-                        <span 
+                        <span
                           key={tech}
                           className="px-3 py-1 bg-gray-800 text-gray-200 rounded-full text-sm"
                         >
