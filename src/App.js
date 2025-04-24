@@ -12,6 +12,7 @@ import SocialBadge from './components/SocialBadges.js';
 import './styles/index.css';
 import profilePic from './assets/profilevideo-unscreen.gif';
 import AboutProjects from './components/ProjectSection.js';
+import { Helmet , HelmetProvider } from 'react-helmet-async';
 
 // navbar 
 const Navbar = () => {
@@ -92,6 +93,7 @@ const Navbar = () => {
   };
 
   return (
+    <HelmetProvider>
     <motion.nav
       className="fixed top-0 w-full z-50 px-4 py-3 transition-all duration-300"
       variants={navbarVariants}
@@ -198,6 +200,7 @@ const Navbar = () => {
         </motion.div>
       </div>
     </motion.nav>
+  </HelmetProvider>
   );
 };
 
@@ -236,6 +239,7 @@ const App = () => {
   const [expandedCard, setExpandedCard] = useState(null); // 🔥 Shared state for both cards
 
   return (
+    <HelmetProvider>
     <div className="app min-h-screen">
       <Navbar />
       <WaveBackground />
@@ -406,6 +410,7 @@ const App = () => {
         </footer>
       </div>
     </div>
+    </HelmetProvider>
   );
 };
 
