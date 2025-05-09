@@ -6,10 +6,10 @@ import knowItAll from '../assets/know-it-all.png';
 import crowdVos from '../assets/crowd-vs.png';
 import { HelmetProvider } from 'react-helmet-async';
 
-const ProjectsSection = () => {
+const ProjectSection = () => {
   const projects = [
     {
-      title: "SeatChart - Exam Seating Arrangement",
+      title: "SeatChart - Exam Seating Chart Generator",
       type: "Web Application",
       description: "A SaaS tool built from scratch that generates examination seating charts from student data. Offers multiple arrangement methods including multi-class students in one room, roll number-wise, and alphanumeric ordering.",
       technologies: ["Java", "Spring Boot", "React", "REST API", "Railway", "Netlify"],
@@ -24,10 +24,25 @@ const ProjectsSection = () => {
       ]
     },
     {
+      title: "Simple Notes",
+      type: "Android Application",
+      description: "A production-ready Android app for note-taking, task management, and expense tracking. Features intuitive swipe gestures to access To-Do and Ledger functionalities, with engaging Lottie animations for onboarding. Tested by 100+ users, achieving a 25% increase in user retention.",
+      technologies: ["Java", "SQLite (Room)", "Material Design","SharedPreferences","ViewPager2", "Lottie Animations"],
+      githubUrl: "https://github.com/01neelesh/SimpleNotes",
+      downloadUrl: "https://github.com/01neelesh/SimpleNotes/releases/download/v1.0.1-beta/SimpleNotes.v1.0.1.apk",
+      videoUrl: "https://drive.google.com/file/d/1brnRsVXQCigh2YBsIEBx_6mWw_5fstig/view?usp=sharing",
+      features: [
+        "Swipe gestures to access To-Do (e.g., 'Buy groceries') and Ledger (e.g., 'Trip Budget')",
+        "Swipe right to delete notes, to-dos, or ledger entries",
+        "Engaging onboarding with Lottie animations",
+        "Supports 50+ CRUD operations for efficient data management"
+      ]
+    },
+    {
       title: "CrowdVos",
       type: "Android Application",
       description: "An opinion trading app inspired platform where users can create polls, join existing polls, and exchange opinions. Fully functional with Firebase integration for real-time data handling.",
-      technologies: ["Android", "Java", "Firebase", "Material Design"],
+      technologies: ["Android", "Java", "Firebase", ],
       githubUrl: "https://github.com/01neelesh/crowdvos",
       downloadUrl: "https://drive.google.com/uc?export=download&id=1oA2dhvPcCgqzFjKvdkxKeS968XYoUmwK",
       screenshotCollage: crowdVos,
@@ -86,7 +101,14 @@ const ProjectsSection = () => {
               <div className="relative rounded-xl overflow-hidden group">
                 <div className="relative h-72 overflow-hidden rounded-lg border-2 border-gray-800">
                   <div className="absolute inset-0 bg-gradient-to-t from-orange-600/20 to-purple-800/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                  {project.type === "Web Application" && project.liveUrl ? (
+                  {project.videoUrl ? (
+                    <iframe
+                      src={`https://drive.google.com/file/d/${project.videoUrl.split('/')[5]}/preview`}
+                      className="w-full h-full object-cover object-top transition-transform duration-700 group-hover:scale-105"
+                      allow="autoplay"
+                      title={`${project.title} walkthrough video`}
+                    />
+                  ) : project.type === "Web Application" && project.liveUrl ? (
                     <a href={project.liveUrl} target="_blank" rel="noopener noreferrer" className="block">
                       <img
                         src={project.imageUrl}
@@ -194,8 +216,7 @@ const ProjectsSection = () => {
         </div>
       </div>
     </section>
-
   );
 };
 
-export default ProjectsSection;
+export default ProjectSection;
