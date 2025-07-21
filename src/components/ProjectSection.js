@@ -27,7 +27,7 @@ const ProjectSection = () => {
       title: "Simple Notes",
       type: "Android Application",
       description: "A production-ready Android app for note-taking, task management, and expense tracking. Features intuitive swipe gestures to access To-Do and Ledger functionalities, with engaging Lottie animations for onboarding. Tested by 100+ users, achieving a 25% increase in user retention.",
-      technologies: ["Java", "SQLite (Room)", "Material Design","SharedPreferences","ViewPager2", "Lottie Animations"],
+      technologies: ["Java", "SQLite (Room)", "Material Design", "SharedPreferences", "ViewPager2", "Lottie Animations"],
       githubUrl: "https://github.com/01neelesh/SimpleNotes",
       downloadUrl: "https://github.com/01neelesh/SimpleNotes/releases/download/v1.0.1-beta/SimpleNotes.v1.0.1.apk",
       videoUrl: "https://drive.google.com/file/d/1brnRsVXQCigh2YBsIEBx_6mWw_5fstig/view?usp=sharing",
@@ -38,11 +38,32 @@ const ProjectSection = () => {
         "Supports 50+ CRUD operations for efficient data management"
       ]
     },
+  {
+    title: "Interactive Login UI with Rive Animations",
+    type: "Mobile UI Prototype (Flutter)",
+    description: "A visually engaging, interactive login screen built with Flutter and animated using Rive. Developed to showcase fluid UI/UX design principles, micro-interactions, and seamless transitions for a modern mobile application experience. Features include eye-catching visual feedback on user actions and a delightful onboarding flow.",
+    technologies: [
+      "Flutter", 
+      "Rive Animations", 
+      "Dart", 
+      "UI/UX Design"
+    ],
+    githubUrl: "https://github.com/01neelesh/interactive-UI-rive-animation",
+     downloadUrl: "https://www.linkedin.com/posts/01neelesh_flutter-riveanimations-uiux-activity-7134229033554227200-64Tt?",
+    videoUrl: "https://drive.google.com/file/d/1fr3TYLxodv3wcBkQYNlgBnTw1wff28H-/view?usp=sharing",
+    features: [
+      "Interactive login form with animated user feedback",
+      "Eye-catching transitions and micro-interactions powered by Rive",
+      "Sleek, modern UI following Flutter best practices",
+      "Lightweight, easy-to-extend codebase",
+      "Showcases Flutter's flexibility for engaging, responsive interfaces"
+    ]
+  },
     {
       title: "CrowdVos",
       type: "Android Application",
       description: "An opinion trading app inspired platform where users can create polls, join existing polls, and exchange opinions. Fully functional with Firebase integration for real-time data handling.",
-      technologies: ["Android", "Java", "Firebase", ],
+      technologies: ["Android", "Java", "Firebase",],
       githubUrl: "https://github.com/01neelesh/crowdvos",
       downloadUrl: "https://drive.google.com/uc?export=download&id=1oA2dhvPcCgqzFjKvdkxKeS968XYoUmwK",
       screenshotCollage: crowdVos,
