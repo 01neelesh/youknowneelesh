@@ -261,9 +261,8 @@ const App = () => {
           <div className="w-full h-full bg-orange-500 rounded-full shadow-lg animate-pulse" />
         </motion.div>
         {/* <!-- Elfsight WhatsApp Chat | Untitled WhatsApp Chat -->l */}
-<div class="inline-block scale-90 hover:scale-95 transition-transform duration-300 origin-center bg-white/20 backdrop-blur-md rounded-xl shadow-lg p-2">
         <div class="elfsight-app-7457715a-6c2d-4ad5-a129-e0d0768d92fc" data-elfsight-app-lazy></div>
-</div>
+
         <div className="content">
           <Section className="min-h-screen flex items-center justify-center">
             <motion.div className="text-center space-y-8 p-4 sm:p-6 lg:p-8">
