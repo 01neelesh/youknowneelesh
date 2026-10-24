@@ -36,11 +36,12 @@ const Navbar = () => {
     };
   }, []);
 
-  const navLinks = [
-    { name: "Projects", href: "#projects" },
-    { name: "Skills", href: "#skills" },
-    { name: "Contact", href: "#contact" }
-  ];
+ const navLinks = [
+  { name: "Projects", href: "#projects" },
+{ name: "Explore Neemari", href: "/Neemari/dist/index.html" },
+  { name: "Skills", href: "#skills" },
+  { name: "Contact", href: "#contact" }
+];
 
   const navbarVariants = {
     top: {
@@ -239,7 +240,7 @@ const App = () => {
   const [expandedCard, setExpandedCard] = useState(null); // 🔥 Shared state for both cards
 
   return (
-    <HelmetProvider>l̥
+    <HelmetProvider>
       <div className="app min-h-screen">
         <Helmet>
           <title>Neelesh Chaturvedi - Portfolio | Coder, Analyst, Poet</title>
